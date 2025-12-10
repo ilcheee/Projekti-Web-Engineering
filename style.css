@@ -128,3 +128,41 @@ body {
   color: var(--accent-soft2);
 }
 
+
+.weather-card {
+  border-radius: 26px;
+  padding: 22px 22px 18px;
+  background: linear-gradient(135deg, var(--card-start), var(--card-end));
+  margin-bottom: 20px;
+}
+
+.weather-main-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.weather-city {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.weather-desc {
+  font-size: 13px;
+  color: var(--accent-soft3);
+}
+
+.weather-temp {
+  font-size: 52px;
+  font-weight: 700;
+}
+
+.weather-extra {
+  margin-top: 18px;
+  display: flex;
+  gap: 24px;
+  font-size: 13px;
+  color: var(--accent-soft3);
+}
+
