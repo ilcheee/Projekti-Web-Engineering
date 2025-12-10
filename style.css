@@ -296,3 +296,26 @@ textarea.input {
   font-weight: 600;
 }
 
+
+.list-tech {
+  margin: 10px 0 16px;
+  font-size: 13px;
+  color: var(--accent-soft3);
+}
+
+.list-tech li {
+  margin-bottom: 3px;
+}
+
+/* Simple history list */
+
+.history-list {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--accent-soft3);
+}
+
+.history-list li {
+  margin-bottom: 3px;
+}
+
