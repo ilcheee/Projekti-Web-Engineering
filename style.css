@@ -166,3 +166,107 @@ body {
   color: var(--accent-soft3);
 }
 
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.chip {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  color: var(--accent-soft3);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin-top: 10px;
+}
+
+.card {
+  border-radius: 20px;
+  padding: 16px 18px;
+  background: #202024;
+  border: 1px solid var(--border-subtle);
+}
+
+.card-title {
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.card-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.card-temp {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+
+.two-column {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 22px;
+}
+
+.auth-card,
+.info-card {
+  border-radius: 22px;
+  padding: 20px 22px;
+  background: #202024;
+  border: 1px solid var(--border-subtle);
+}
+
+.auth-card h2 {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.form-group {
+  margin-bottom: 12px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border-subtle);
+  background: #19191A;
+  color: var(--text-main);
+  font-size: 13px;
+}
+
+.input::placeholder {
+  color: #666a6e;
+}
+
+textarea.input {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.form-note {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+.form-footer {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
