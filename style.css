@@ -1,0 +1,27 @@
+:root {
+  --bg-main: #19191A;
+  --primary: #5284BD;
+  --primary-dark: #3D6A9F;
+  --card-start: #2F527A;
+  --card-end: #5284BD;
+  --accent-soft: #779ECB;
+  --accent-soft2: #9CB8D9;
+  --accent-soft3: #C1D3E7;
+  --accent-bg: #E6EDF5;
+  --text-main: #ffffff;
+  --text-muted: #C1D3E7;
+  --border-subtle: #2a2a2b;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+}
+
+body {
+  background: var(--bg-main);
+  color: var(--text-main);
+}
+
