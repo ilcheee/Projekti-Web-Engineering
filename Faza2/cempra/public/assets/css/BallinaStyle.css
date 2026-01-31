@@ -1,0 +1,234 @@
+.weather-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.wx-anim {
+  position: absolute;
+  inset: 0; 
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.9;
+
+  pointer-events: none;
+}
+
+.weather-card > *:not(.wx-anim){
+  position: relative;
+  z-index: 2;
+}
+
+.wx-sun,
+.wx-cloud,
+.wx-rain {
+  display: none;
+}
+
+.wx-sun{
+  z-index: 0;
+}
+.wx-anim.sunny .wx-sun {
+  display: block;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.9), rgba(255,220,120,0.9), rgba(255,170,50,0.8));
+  filter: blur(0.2px);
+  animation: sunFloat 6s ease-in-out infinite;
+}
+
+.wx-anim.sunny .wx-sun::after {
+  content: "";
+  position: absolute;
+  inset: -25px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, rgba(255,255,255,0.0), rgba(255,255,255,0.35), rgba(255,255,255,0.0));
+  animation: sunSpin 10s linear infinite;
+}
+
+@keyframes sunFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+@keyframes sunSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.wx-anim.cloudy .wx-cloud,
+.wx-anim.rainy .wx-cloud {
+  display: block;
+}
+
+.wx-cloud {
+  position: absolute;
+  top: 18px;
+  left: -60%;
+  width: 320px;
+  height: 110px;
+  border-radius: 80px;
+  background: rgba(255,255,255,0.20);
+  filter: blur(0.4px);
+}
+
+.wx-cloud::before,
+.wx-cloud::after {
+  content: "";
+  position: absolute;
+  background: rgba(255,255,255,0.22);
+  border-radius: 50%;
+}
+
+.wx-cloud::before {
+  width: 120px; height: 120px;
+  top: -45px; left: 55px;
+}
+
+.wx-cloud::after {
+  width: 160px; height: 160px;
+  top: -70px; left: 135px;
+}
+
+.wx-cloud-1 { animation: cloudMove 18s linear infinite; opacity: 0.9; }
+.wx-cloud-2 { top: 62px; width: 380px; opacity: 0.65; animation: cloudMove 26s linear infinite; }
+
+@keyframes cloudMove {
+  from { transform: translateX(0); }
+  to { transform: translateX(220%); }
+}
+
+.wx-anim.rainy .wx-rain {
+  display: block;
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to bottom, rgba(255,255,255,0.0), rgba(255,255,255,0.20)),
+    repeating-linear-gradient(
+      100deg,
+      rgba(255,255,255,0.0) 0px,
+      rgba(255,255,255,0.0) 10px,
+      rgba(255,255,255,0.25) 12px,
+      rgba(255,255,255,0.0) 14px
+    );
+  background-size: 100% 100%, 160px 160px;
+  animation: rainFall 0.7s linear infinite;
+  opacity: 0.85;
+}
+
+@keyframes rainFall {
+  from { background-position: 0 0, 0 0; }
+  to { background-position: 0 0, -60px 160px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wx-anim * { animation: none !important; }
+}
+
+.wx-sun, .wx-cloud, .wx-rain, .wx-snow { display: none; }
+
+.wx-anim.snowy .wx-snow{
+  display: block;
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.85) 2px, rgba(255,255,255,0) 3px),
+    radial-gradient(circle, rgba(255,255,255,0.65) 1.5px, rgba(255,255,255,0) 3px),
+    radial-gradient(circle, rgba(255,255,255,0.55) 1px, rgba(255,255,255,0) 3px);
+  background-size: 120px 120px, 160px 160px, 220px 220px;
+  background-position: 0 0, 40px -60px, -70px -20px;
+  animation: snowFall 4.8s linear infinite;
+  opacity: 0.85;
+} 
+
+@keyframes snowFall{
+  from { background-position: 0 -120px, 40px -200px, -70px -160px; }
+  to   { background-position: 0 220px,  40px 260px,  -70px 320px; }
+}
+
+
+.forecast-panel{
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  margin-top: 10px;
+  transition: max-height 350ms ease, opacity 250ms ease;
+}
+
+.weather-card.expanded .forecast-panel{
+  max-height: 320px; /* mjafton për 3 karta */
+  opacity: 1;
+}
+
+.forecast-title{
+  font-weight: 700;
+  margin: 10px 0 8px;
+}
+
+.forecast-grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.forecast-item{
+  border-radius: 14px;
+  padding: 10px;
+  background: rgba(255,255,255,0.10);
+  backdrop-filter: blur(8px);
+}
+
+.forecast-day{
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.forecast-temp{
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.forecast-sub{
+  opacity: 0.9;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+/* responsive */
+@media (max-width: 700px){
+  .forecast-grid{ grid-template-columns: 1fr; }
+  .weather-card.expanded .forecast-panel{ max-height: 520px; }
+}
+
+.popular-slider {
+  overflow: hidden;
+  margin-top: 10px;
+  border-radius: 20px;
+}
+
+.popular-track {
+  display: flex;
+  gap: 18px;
+  width: max-content;
+  animation: popularScroll 18s linear infinite;
+  padding: 2px 0;
+}
+
+/* pause kur e vendos miun sipër (nice UX) */
+.popular-slider:hover .popular-track {
+  animation-play-state: paused;
+  cursor: grab;
+}
+
+/* kartat në slider kanë width të qëndrueshme */
+.popular-track .card {
+  min-width: 240px;
+}
+
+@keyframes popularScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
