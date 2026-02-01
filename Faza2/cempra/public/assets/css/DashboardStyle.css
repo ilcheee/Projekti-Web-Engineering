@@ -1,0 +1,141 @@
+.stats-row{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.stat-card{
+  padding: 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+}
+
+.stat-label{
+  font-size: 12px;
+  opacity: 0.85;
+  margin-bottom: 8px;
+}
+
+.stat-value{
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.history-list{
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+  display: grid;
+  gap: 10px;
+}
+
+.history-list li{
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.05);
+  opacity: 0.95;
+}
+
+
+.dash-settings{
+  margin-top: 14px;
+  padding: 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+
+  display: none;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.dash-settings[aria-hidden="false"]{
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dash-settings-title{
+  font-weight: 700;
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+.dash-row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.unit-toggle{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.unit-toggle .chip{
+  cursor: pointer;
+  user-select: none;
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+
+.unit-toggle .chip:hover{
+  transform: translateY(-1px);
+}
+
+.active-unit{
+  outline: 2px solid rgba(255,255,255,0.35);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 760px){
+  .stats-row{
+    grid-template-columns: 1fr;
+  }
+
+  .dash-row{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .unit-toggle{
+    width: 100%;
+  }
+
+  .unit-toggle .chip{
+    flex: 1;
+    text-align: center;
+  }
+}
+.dash-theme{
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+.dash-sunny{
+  background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.25), transparent 45%),
+              linear-gradient(135deg, rgba(255,200,80,0.35), rgba(72,126,235,0.25));
+}
+
+.dash-cloudy{
+  background: linear-gradient(135deg, rgba(160,170,190,0.35), rgba(72,126,235,0.18));
+}
+
+.dash-rain{
+  background: linear-gradient(135deg, rgba(60,80,120,0.45), rgba(20,30,60,0.35));
+}
+
+.dash-snow{
+  background: linear-gradient(135deg, rgba(230,240,255,0.55), rgba(140,170,220,0.25));
+}
+
+.dash-storm{
+  background: linear-gradient(135deg, rgba(35,35,50,0.65), rgba(0,0,0,0.35));
+}
