@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const grid = document.getElementById("favoritesGrid");
   const empty = document.getElementById("favoritesEmpty");
 
+  // ---------------- DESC + THEMES ----------------
   function openMeteoDesc(code) {
     const map = {
       0: "Kthjellët",
@@ -161,10 +162,12 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       `;
 
+      // nëse ke ruajtur weatherCode, vendose menjëherë
       if (typeof fav.weatherCode === "number") {
         applyTheme(card, fav.weatherCode);
       }
 
+      // Remove
       card.querySelector("[data-remove]").addEventListener("click", () => {
         const current = readFavorites();
         const key = normalizeKey(fav);
@@ -196,5 +199,6 @@ document.addEventListener("DOMContentLoaded", () => {
     renderMapFromFavorites(list);
   }
 
+  // start
   refreshUI();
 });
